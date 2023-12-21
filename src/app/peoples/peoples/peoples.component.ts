@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { People } from '../model/people';
-import { MatTableModule } from '@angular/material/table';
+import { AppMaterialModule } from '../../shared/app-material/app-material.module';
 
 @Component({
   selector: 'app-peoples',
   standalone: true,
-  imports: [MatTableModule],
+  imports: [AppMaterialModule],
   templateUrl: './peoples.component.html',
   styleUrls: ['./peoples.component.scss'],
 })
