@@ -7,13 +7,12 @@ import { delay, first, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class PeoplesService {
-  private readonly API = '../../../assets/peoples.son';
+  private readonly API = '../../../assets/peoples.json';
   constructor(private httpClient: HttpClient) {}
 
   findAll() {
     return this.httpClient.get<People[]>(this.API).pipe(
       first(),
-      delay(5000),
       tap(peoples => console.log(peoples))
     );
   }
