@@ -1,0 +1,145 @@
+[
+  {
+    "id": "1",
+    "nome": "João Felipe",
+    "apelido": "jão",
+    "time": "Cruzeiro",
+    "cpf": "08545360606",
+    "hobbie": "estudar",
+    "cidade": {
+      "id": 1,
+      "nome": "Camacho",
+      "estado": "MG"
+    }
+  },
+  {
+    "id": "2",
+    "nome": "Maria Silva",
+    "apelido": "mari",
+    "time": "Flamengo",
+    "cpf": "12345678901",
+    "hobbie": "viajar",
+    "cidade": {
+      "id": 2,
+      "nome": "Rio de Janeiro",
+      "estado": "RJ"
+    }
+  },
+  {
+    "id": "3",
+    "nome": "Carlos Oliveira",
+    "apelido": "carlinhos",
+    "time": "Palmeiras",
+    "cpf": "98765432109",
+    "hobbie": "tocar violão",
+    "cidade": {
+      "id": 3,
+      "nome": "São Paulo",
+      "estado": "SP"
+    }
+  },
+  {
+    "id": "4",
+    "nome": "Ana Souza",
+    "apelido": "aninha",
+    "time": "Grêmio",
+    "cpf": "65432109876",
+    "hobbie": "cozinhar",
+    "cidade": {
+      "id": 4,
+      "nome": "Porto Alegre",
+      "estado": "RS"
+    }
+  },
+  {
+    "id": "5",
+    "nome": "Ricardo Santos",
+    "apelido": "rick",
+    "time": "Santos",
+    "cpf": "01234567890",
+    "hobbie": "praticar esportes",
+    "cidade": {
+      "id": 5,
+      "nome": "Santos",
+      "estado": "SP"
+    }
+  },
+  {
+    "id": "6",
+    "nome": "Juliana Lima",
+    "apelido": "juju",
+    "time": "Corinthians",
+    "cpf": "11122233344",
+    "hobbie": "ler",
+    "cidade": {
+      "id": 6,
+      "nome": "Campinas",
+      "estado": "SP"
+    }
+  },
+  {
+    "id": "7",
+    "nome": "Pedro Rocha",
+    "apelido": "pedrinho",
+    "time": "Internacional",
+    "cpf": "55544433322",
+    "hobbie": "pintar",
+    "cidade": {
+      "id": 7,
+      "nome": "Porto Alegre",
+      "estado": "RS"
+    }
+  },
+  {
+    "id": "8",
+    "nome": "Fernanda Almeida",
+    "apelido": "fer",
+    "time": "Atlético-MG",
+    "cpf": "98765432198",
+    "hobbie": "fotografia",
+    "cidade": {
+      "id": 8,
+      "nome": "Belo Horizonte",
+      "estado": "MG"
+    }
+  },
+  {
+    "id": "9",
+    "nome": "Lucas Pereira",
+    "apelido": "luquinhas",
+    "time": "Botafogo",
+    "cpf": "87654321098",
+    "hobbie": "jogar videogame",
+    "cidade": {
+      "id": 9,
+      "nome": "Rio de Janeiro",
+      "estado": "RJ"
+    }
+  },
+  {
+    "id": "10",
+    "nome": "Mariana Costa",
+    "apelido": "mary",
+    "time": "Vasco",
+    "cpf": "12309876543",
+    "hobbie": "dançar",
+    "cidade": {
+      "id": 10,
+      "nome": "Rio de Janeiro",
+      "estado": "RJ"
+    }
+  },
+  {
+    "id": "11",
+    "nome": "Eduardo Oliveira",
+    "apelido": "edu",
+    "time": "Bahia",
+    "cpf": "87654321012",
+    "hobbie": "jogar futebol",
+    "cidade": {
+      "id": 11,
+      "nome": "Salvador",
+      "estado": "BA"
+    }
+  }
+]
