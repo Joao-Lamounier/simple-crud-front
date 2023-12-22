@@ -1,4 +1,5 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { Router } from 'express';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'peoples' },

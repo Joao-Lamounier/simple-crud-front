@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card _ngcontent-ng-c2234950958="" ngSkipHydration>
   <mat-card-content>
     <div *ngIf="peoples$ | async as peoples; else loading">
       <p>
@@ -61,11 +61,11 @@
               <mat-icon>group_add</mat-icon>
             </button>
           </mat-header-cell>
+
           <mat-cell *matCellDef="let people">
             <button mat-icon-button color="primary">
               <mat-icon>edit</mat-icon>
             </button>
-
             <button mat-icon-button color="warn">
               <mat-icon>person_remove</mat-icon>
             </button>
