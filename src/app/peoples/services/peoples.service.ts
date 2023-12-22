@@ -7,7 +7,7 @@ import { delay, first, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class PeoplesService {
-  private readonly API = '../../../assets/peoples.json';
+  private readonly API = 'api/pessoas';
   constructor(private httpClient: HttpClient) {}
 
   findAll() {

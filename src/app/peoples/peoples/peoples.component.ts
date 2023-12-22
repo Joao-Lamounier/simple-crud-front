@@ -8,6 +8,7 @@ import { error } from 'console';
 import { MatDialog } from '@angular/material/dialog';
 import { SharedModule } from '../../shared/shared.module';
 import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-peoples',
@@ -18,11 +19,13 @@ import { ErrorDialogComponent } from '../../shared/components/error-dialog/error
 })
 export class PeoplesComponent implements OnInit {
   peoples$: Observable<People[]>;
-  displayedColumns = ['nome', 'apelido', 'time', 'cpf', 'hobbie', 'cidade'];
+  displayedColumns = ['nome', 'apelido', 'time', 'cpf', 'hobbie', 'cidade', 'actions'];
 
   constructor(
     private peoplesService: PeoplesService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.peoples$ = this.peoplesService.findAll().pipe(
       catchError((error) => {
@@ -37,4 +40,7 @@ export class PeoplesComponent implements OnInit {
     });
   }
   ngOnInit(): void {}
+  onAdd(){
+    this.router.navigate(['new'], {relativeTo: this.route});
+  }
 }
