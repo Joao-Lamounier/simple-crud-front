@@ -13,6 +13,8 @@ import { conformToMask } from 'text-mask-core';
 import { TextMaskModule } from 'angular2-text-mask';
 import { PeoplesService } from '../services/peoples.service';
 import { People } from './../model/people';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-peoples-form',
@@ -26,7 +28,9 @@ export class PeoplesFormComponent implements OnInit {
   pessoa: People | null = null;
   constructor(
     private formBuilder: FormBuilder,
-    private service: PeoplesService
+    private service: PeoplesService,
+    private snackBar: MatSnackBar,
+    private location: Location
   ) {
     this.form = this.formBuilder.group({
       nome: [null],
@@ -64,9 +68,14 @@ export class PeoplesFormComponent implements OnInit {
   onSubmit(): void {
     this.buildPeople();
     console.log(this.pessoa);
-    this.service.save(this.pessoa!).subscribe((result) => console.log(result));
+    this.service.save(this.pessoa!).subscribe(
+      (result) => this.onSucess(),
+      (error) => this.onError()
+    );
   }
-  onCancel() {}
+  onCancel() {
+    this.location.back();
+  }
   buildPeople() {
     this.pessoa = {
       id: 1,
@@ -86,5 +95,14 @@ export class PeoplesFormComponent implements OnInit {
       estado: this.estado?.value,
     };
     return cdd;
+  }
+  private onSucess() {
+    this.snackBar.open('Pessoa cadastrada com sucesso!', '', {
+      duration: 5000,
+    });
+    this.location.back()
+  }
+  private onError() {
+    this.snackBar.open('Erro ao cadastrar!', '', { duration: 5000 });
   }
 }
