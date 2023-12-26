@@ -26,4 +26,8 @@ export class PeoplesFormComponent implements OnInit {
     });
   }
   ngOnInit(): void {}
+  onSubmit(){
+
+  }
+  onCancel(){}
 }
