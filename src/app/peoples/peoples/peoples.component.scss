@@ -1,8 +1,5 @@
-table {
-  width: 100%;
-}
 .loading-spinner {
-  padding: 25px;;
+  padding: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,3 +8,14 @@ table {
 .button-container {
   white-space: nowrap;
 }
+mat-carde {
+  max-width: 80%;
+  margin: 2em auto;
+  text-align: center;
+}
+.column-flex{
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+}
+
