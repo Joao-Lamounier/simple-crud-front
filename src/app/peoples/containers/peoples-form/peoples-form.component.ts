@@ -1,4 +1,4 @@
-import { Cidade } from './../model/people';
+import { Cidade } from '../../model/people';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -7,12 +7,12 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
-import { AppComponent } from '../../app.component';
-import { AppMaterialModule } from '../../shared/app-material/app-material.module';
+import { AppComponent } from '../../../app.component';
+import { AppMaterialModule } from '../../../shared/app-material/app-material.module';
 import { conformToMask } from 'text-mask-core';
 import { TextMaskModule } from 'angular2-text-mask';
-import { PeoplesService } from '../services/peoples.service';
-import { People } from './../model/people';
+import { PeoplesService } from '../../services/peoples.service';
+import { People } from '../../model/people';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Location } from '@angular/common';
 
@@ -100,7 +100,7 @@ export class PeoplesFormComponent implements OnInit {
     this.snackBar.open('Pessoa cadastrada com sucesso!', '', {
       duration: 5000,
     });
-    this.location.back()
+    this.location.back();
   }
   private onError() {
     this.snackBar.open('Erro ao cadastrar!', '', { duration: 5000 });
