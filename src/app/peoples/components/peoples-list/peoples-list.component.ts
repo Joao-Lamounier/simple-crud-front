@@ -20,6 +20,8 @@ import { SharedModule } from '../../../shared/shared.module';
 export class PeoplesListComponent implements OnInit {
   @Input() peoples: People[] = [];
   @Output() add = new EventEmitter(false);
+  @Output() edit = new EventEmitter(false);
+
   readonly displayedColumns = [
     'nome',
     'apelido',
@@ -34,5 +36,8 @@ export class PeoplesListComponent implements OnInit {
   onAdd() {
     // this.router.navigate(['new'], { relativeTo: this.route });
     this.add.emit(true);
+  }
+  onEdit(people: People){
+    this.edit.emit(people);
   }
 }

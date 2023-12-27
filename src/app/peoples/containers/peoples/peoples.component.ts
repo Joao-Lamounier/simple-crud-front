@@ -48,4 +48,7 @@ export class PeoplesComponent implements OnInit {
   onAdd() {
     this.router.navigate(['new'], { relativeTo: this.route });
   }
+  onEdit(people: People) {
+    this.router.navigate(['edit', people.id], { relativeTo: this.route });
+  }
 }

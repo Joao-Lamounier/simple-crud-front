@@ -20,4 +20,7 @@ export class PeoplesService {
   save(record: People) {
     return this.httpClient.post<People>(this.API, record).pipe(first());
   }
+  loadById(id: number) {
+    return this.httpClient.get<People>(`${this.API}/${id}`);
+  }
 }
