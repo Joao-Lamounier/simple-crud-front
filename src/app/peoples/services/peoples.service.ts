@@ -8,7 +8,6 @@ import { delay, first, tap } from 'rxjs';
 })
 export class PeoplesService {
   private readonly API = 'api/pessoas';
-  // private readonly API = '../../../assets/peoples.json';
   constructor(private httpClient: HttpClient) {}
 
   findAll() {
@@ -18,6 +17,31 @@ export class PeoplesService {
     );
   }
   save(record: People) {
+    console.log(record);
+    if (record.id) {
+      console.log('update');
+      return this.update(record);
+    }
+    console.log('creat');
     return this.httpClient.post<People>(this.API, record).pipe(first());
+  }
+  loadById(id: number) {
+    return this.httpClient.get<People>(`${this.API}/${id}`);
+  }
+  private create(record: People) {
+    return this.httpClient.post<People>(this.API, record).pipe(first());
+  }
+  private update(record: People) {
+    return this.httpClient
+      .put<People>(`${this.API}/${record.id}`, record)
+      .pipe(first());
+  }
+  remove(id: number) {
+    return this.httpClient.delete(`${this.API}/${id}`).pipe(first());
+  }
+
+  download() {
+    const downloadPath = 'api/download/planilha';
+    return this.httpClient.get(downloadPath, { responseType: 'arraybuffer' });
   }
 }

@@ -1,4 +1,4 @@
-import { Cidade } from './../model/people';
+import { Cidade } from '../../model/people';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -7,14 +7,15 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
-import { AppComponent } from '../../app.component';
-import { AppMaterialModule } from '../../shared/app-material/app-material.module';
+import { AppComponent } from '../../../app.component';
+import { AppMaterialModule } from '../../../shared/app-material/app-material.module';
 import { conformToMask } from 'text-mask-core';
 import { TextMaskModule } from 'angular2-text-mask';
-import { PeoplesService } from '../services/peoples.service';
-import { People } from './../model/people';
+import { PeoplesService } from '../../services/peoples.service';
+import { People } from '../../model/people';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-peoples-form',
@@ -30,9 +31,11 @@ export class PeoplesFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private service: PeoplesService,
     private snackBar: MatSnackBar,
-    private location: Location
+    private location: Location,
+    private route: ActivatedRoute
   ) {
     this.form = this.formBuilder.group({
+      id: [null],
       nome: [null],
       apelido: [null],
       time: [null],
@@ -64,7 +67,22 @@ export class PeoplesFormComponent implements OnInit {
     return this.form.get('hobbie');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const people: People | undefined = this.route.snapshot.data['people'];
+    if (people) {
+      this.form.setValue({
+        id: people.id,
+        nome: people.nome,
+        apelido: people.apelido,
+        time: people.time,
+        cpf: people.cpf,
+        cidade: people.cidade.nome,
+        hobbie: people.hobbie,
+        estado: people.cidade.estado,
+      });
+    }
+  }
+
   onSubmit(): void {
     this.buildPeople();
     console.log(this.pessoa);
@@ -78,7 +96,7 @@ export class PeoplesFormComponent implements OnInit {
   }
   buildPeople() {
     this.pessoa = {
-      id: 1,
+      id: this.form.value.id,
       nome: this.nome?.value,
       apelido: this.apelido?.value,
       time: this.time?.value,
@@ -89,18 +107,19 @@ export class PeoplesFormComponent implements OnInit {
   }
 
   buildCidade() {
+    const cidadeExistente: Cidade | undefined = this.route.snapshot.data['people']?.cidade;
     const cdd: Cidade = {
-      id: 1,
+      id: cidadeExistente ? cidadeExistente.id : 1,
       nome: this.cidade?.value,
       estado: this.estado?.value,
     };
     return cdd;
   }
   private onSucess() {
-    this.snackBar.open('Pessoa cadastrada com sucesso!', '', {
+    this.snackBar.open('Pessoa salva com sucesso!', '', {
       duration: 5000,
     });
-    this.location.back()
+    this.location.back();
   }
   private onError() {
     this.snackBar.open('Erro ao cadastrar!', '', { duration: 5000 });

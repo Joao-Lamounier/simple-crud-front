@@ -1,0 +1,72 @@
+<mat-table [dataSource]="peoples">
+  <ng-container matColumnDef="nome">
+    <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+    <mat-cell *matCellDef="let people">
+      <mat-icon aria-hidden="false" fontIcon="person"></mat-icon>
+      {{ people.nome }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="apelido">
+    <mat-header-cell *matHeaderCellDef>Apelido</mat-header-cell>
+    <mat-cell *matCellDef="let people">
+      <mat-icon aria-hidden="false" fontIcon="switch_account"></mat-icon>
+      {{ people.apelido }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="time">
+    <mat-header-cell *matHeaderCellDef>Time</mat-header-cell>
+    <mat-cell *matCellDef="let people">
+      <mat-icon aria-hidden="false" fontIcon="sports_soccer"></mat-icon>
+      {{ people.time }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="cpf">
+    <mat-header-cell *matHeaderCellDef>CPF</mat-header-cell>
+    <mat-cell *matCellDef="let people">
+      <mat-icon aria-hidden="false" fontIcon="assignment_ind"></mat-icon>
+      {{ people.cpf }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="hobbie">
+    <mat-header-cell *matHeaderCellDef>Hobbie</mat-header-cell>
+    <mat-cell *matCellDef="let people">
+      <mat-icon aria-hidden="false" fontIcon="toys_and_games"></mat-icon>
+      {{ people.hobbie }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="cidade">
+    <mat-header-cell *matHeaderCellDef>Cidade</mat-header-cell>
+    <mat-cell *matCellDef="let people">
+      <mat-icon aria-hidden="false" fontIcon="location_on"></mat-icon>
+      {{ people.cidade.nome }} - {{ people.cidade.estado }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef>
+      <button mat-mini-fab color="accent" (click)="onDownload()">
+        <mat-icon>download</mat-icon>
+      </button>
+      <button mat-mini-fab color="accent" (click)="onAdd()">
+        <mat-icon>group_add</mat-icon>
+      </button>
+    </mat-header-cell>
+
+    <mat-cell *matCellDef="let people">
+      <button mat-icon-button color="primary" (click)="onEdit(people)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="onDelete(people)">
+        <mat-icon>person_remove</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
