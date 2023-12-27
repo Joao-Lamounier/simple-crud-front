@@ -21,6 +21,8 @@ export class PeoplesListComponent implements OnInit {
   @Input() peoples: People[] = [];
   @Output() add = new EventEmitter(false);
   @Output() edit = new EventEmitter(false);
+  @Output() remove = new EventEmitter(false);
+  @Output() download = new EventEmitter(false);
 
   readonly displayedColumns = [
     'nome',
@@ -34,10 +36,15 @@ export class PeoplesListComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) {}
   ngOnInit(): void {}
   onAdd() {
-    // this.router.navigate(['new'], { relativeTo: this.route });
     this.add.emit(true);
   }
-  onEdit(people: People){
+  onEdit(people: People) {
     this.edit.emit(people);
+  }
+  onDelete(people: People) {
+    this.remove.emit(people);
+  }
+  onDownload() {
+    this.download.emit(true);
   }
 }

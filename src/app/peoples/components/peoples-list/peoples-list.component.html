@@ -49,6 +49,9 @@
 
   <ng-container matColumnDef="actions">
     <mat-header-cell *matHeaderCellDef>
+      <button mat-mini-fab color="accent" (click)="onDownload()">
+        <mat-icon>download</mat-icon>
+      </button>
       <button mat-mini-fab color="accent" (click)="onAdd()">
         <mat-icon>group_add</mat-icon>
       </button>
@@ -58,7 +61,7 @@
       <button mat-icon-button color="primary" (click)="onEdit(people)">
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-icon-button color="warn">
+      <button mat-icon-button color="warn" (click)="onDelete(people)">
         <mat-icon>person_remove</mat-icon>
       </button>
     </mat-cell>

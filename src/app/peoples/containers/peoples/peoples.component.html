@@ -9,6 +9,8 @@
         [peoples]="peoples"
         (add)="onAdd()"
         (edit)="onEdit($event)"
+        (remove)="onRemove($event)"
+        (download)="onDownload()"
       ></app-peoples-list>
 
       <ng-template #loading>

@@ -68,18 +68,21 @@ export class PeoplesFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const people: People = this.route.snapshot.data['people'];
-    this.form.setValue({
-      id: people.id,
-      nome: people.nome,
-      apelido: people.apelido,
-      time: people.time,
-      cpf: people.cpf,
-      cidade: people.cidade.nome,
-      hobbie: people.hobbie,
-      estado: people.cidade.estado,
-    });
+    const people: People | undefined = this.route.snapshot.data['people'];
+    if (people) {
+      this.form.setValue({
+        id: people.id,
+        nome: people.nome,
+        apelido: people.apelido,
+        time: people.time,
+        cpf: people.cpf,
+        cidade: people.cidade.nome,
+        hobbie: people.hobbie,
+        estado: people.cidade.estado,
+      });
+    }
   }
+
   onSubmit(): void {
     this.buildPeople();
     console.log(this.pessoa);
@@ -93,7 +96,7 @@ export class PeoplesFormComponent implements OnInit {
   }
   buildPeople() {
     this.pessoa = {
-      id: 1,
+      id: this.form.value.id,
       nome: this.nome?.value,
       apelido: this.apelido?.value,
       time: this.time?.value,
@@ -104,15 +107,16 @@ export class PeoplesFormComponent implements OnInit {
   }
 
   buildCidade() {
+    const cidadeExistente: Cidade | undefined = this.route.snapshot.data['people']?.cidade;
     const cdd: Cidade = {
-      id: 1,
+      id: cidadeExistente ? cidadeExistente.id : 1,
       nome: this.cidade?.value,
       estado: this.estado?.value,
     };
     return cdd;
   }
   private onSucess() {
-    this.snackBar.open('Pessoa cadastrada com sucesso!', '', {
+    this.snackBar.open('Pessoa salva com sucesso!', '', {
       duration: 5000,
     });
     this.location.back();
