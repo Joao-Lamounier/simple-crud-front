@@ -15,6 +15,7 @@ import { PeoplesService } from '../../services/peoples.service';
 import { People } from '../../model/people';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-peoples-form',
@@ -30,9 +31,11 @@ export class PeoplesFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private service: PeoplesService,
     private snackBar: MatSnackBar,
-    private location: Location
+    private location: Location,
+    private route: ActivatedRoute
   ) {
     this.form = this.formBuilder.group({
+      id: [null],
       nome: [null],
       apelido: [null],
       time: [null],
@@ -64,7 +67,19 @@ export class PeoplesFormComponent implements OnInit {
     return this.form.get('hobbie');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const people: People = this.route.snapshot.data['people'];
+    this.form.setValue({
+      id: people.id,
+      nome: people.nome,
+      apelido: people.apelido,
+      time: people.time,
+      cpf: people.cpf,
+      cidade: people.cidade.nome,
+      hobbie: people.hobbie,
+      estado: people.cidade.estado,
+    });
+  }
   onSubmit(): void {
     this.buildPeople();
     console.log(this.pessoa);
